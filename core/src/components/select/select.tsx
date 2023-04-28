@@ -695,14 +695,14 @@ export class Select implements ComponentInterface {
   };
 
   private renderLabel() {
-    const { label } = this;
-    if (label === undefined) {
-      return;
-    }
+    // const { label } = this;
+    // if (label === undefined) {
+    //   return;
+    // }
 
     return (
       <div class="label-text-wrapper">
-        <div class="label-text">{this.label}</div>
+        <slot name="label"></slot>
       </div>
     );
   }
@@ -728,7 +728,7 @@ export class Select implements ComponentInterface {
           <div class="select-outline-start"></div>
           <div class="select-outline-notch">
             <div class="notch-spacer" aria-hidden="true">
-              {this.label}
+              {(this.el.querySelector('[slot]') as HTMLElement).innerText}
             </div>
           </div>
           <div class="select-outline-end"></div>
