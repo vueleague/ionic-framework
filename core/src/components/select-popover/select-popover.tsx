@@ -116,7 +116,7 @@ export class SelectPopover implements ComponentInterface {
 
   renderCheckboxOptions(options: SelectPopoverOption[]) {
     return options.map((option) => (
-      <ion-item class={getClassMap(option.cssClass)}>
+      <ion-item class={getClassMap(option.cssClass)} lines="inset">
         <ion-checkbox
           slot="start"
           value={option.value}
@@ -141,7 +141,7 @@ export class SelectPopover implements ComponentInterface {
     return (
       <ion-radio-group value={checked} onIonChange={(ev) => this.callOptionHandler(ev)}>
         {options.map((option) => (
-          <ion-item class={getClassMap(option.cssClass)}>
+          <ion-item class={getClassMap(option.cssClass)} lines="inset">
             <ion-radio
               value={option.value}
               disabled={option.disabled}
