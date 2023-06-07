@@ -36,7 +36,7 @@
         <ion-content>
           <ion-list>
             <ion-item>
-              <ion-button id="start-menu-button">Button</ion-button>
+              <ion-button id="start-menu-button" onclick="closeAndDisable()">Close and disable</ion-button>
             </ion-item>
             <ion-item>Menu Item</ion-item>
             <ion-item>Menu Item</ion-item>
@@ -62,39 +62,6 @@
         </ion-content>
       </ion-menu>
 
-      <ion-menu side="start" menu-id="custom-menu" content-id="main" class="my-custom-menu">
-        <ion-header>
-          <ion-toolbar color="tertiary">
-            <ion-title>Custom Menu</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
-
-      <ion-menu side="end" menu-id="end-menu" content-id="main" type="push">
-        <ion-header>
-          <ion-toolbar color="danger">
-            <ion-title>End Menu</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
 
       <div class="ion-page" id="main">
         <ion-header>
@@ -127,10 +94,45 @@
     </style>
 
     <script>
+
+      const menu = document.querySelector('ion-menu');
+      menu.addEventListener('ionDidOpen', () => {
+      console.log('menu open')
+      });
+      menu.addEventListener('ionDidClose', () => {
+      console.log('menu close')
+      });
+
+      const closeAndDisable = () => {
+        menuController.close('start-menu');
+
+        setTimeout(async () => {
+          await menuController.enable(false, 'start-menu')
+          console.log('disabled')
+        //   setTimeout(async () => {
+        //    await menuController.enable(true, 'start-menu')
+        //    console.log('enabled')
+        //     await menuController.open('start-menu');
+        //
+        //   }, 2000);
+        }, 50);
+      }
+
       async function openStart() {
         // Open the menu by menu-id
         await menuController.enable(true, 'start-menu');
-        await menuController.open('start-menu');
+        menuController.open('start-menu');
+
+        setTimeout(async () => {
+          await menuController.enable(false, 'start-menu')
+          console.log('disabled')
+          setTimeout(async () => {
+           await menuController.enable(true, 'start-menu')
+           console.log('enabled')
+            await menuController.open('start-menu');
+
+          }, 2000);
+        }, 50);
       }
 
       async function openEnd() {

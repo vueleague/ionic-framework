@@ -154,6 +154,7 @@ const createMenuController = () => {
   };
 
   const _setOpen = async (menu: MenuI, shouldOpen: boolean, animated: boolean): Promise<boolean> => {
+    console.log('is anim sync',isAnimatingSync())
     if (isAnimatingSync()) {
       return false;
     }

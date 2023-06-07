@@ -417,11 +417,66 @@ export class Menu implements ComponentInterface, MenuI {
     this.beforeAnimation(shouldOpen);
 
     await this.loadAnimation();
-    await this.startAnimation(shouldOpen, animated);
-    this.afterAnimation(shouldOpen);
 
-    return true;
+    const complete = await this.startAnimation(shouldOpen, animated);
+
+    /**
+     * An animation may not complete if the
+     * menu is disabled mid-open animation.
+     */
+    if (complete) {
+      this.afterAnimation(shouldOpen);
+    } else {
+      this.afterCancelledAnimation();
+    }
+
+    return complete;
   }
+
+  /**
+   * If the animation was cancelled then
+   * we need to revert the component to its
+   * previous state.
+   */
+  private afterCancelledAnimation() {
+    /**
+     * this._isOpen is only updated
+     * once the animation completes, which
+     * is why we can rely on the current
+     * state of the variable here.
+     */
+    if (this._isOpen) {
+      this.blocker.block();
+
+      if (this.backdropEl) {
+        this.backdropEl.classList.add(SHOW_BACKDROP);
+      }
+
+      if (this.contentEl) {
+        this.contentEl.classList.add(MENU_CONTENT_OPEN);
+      }
+
+      if (this.el) {
+        this.el.classList.add(SHOW_MENU);
+      }
+    } else {
+      this.blocker.unblock();
+
+      if (this.backdropEl) {
+        this.backdropEl.classList.remove(SHOW_BACKDROP);
+      }
+
+      if (this.contentEl) {
+        this.contentEl.classList.remove(MENU_CONTENT_OPEN);
+      }
+
+      if (this.el) {
+        this.el.classList.remove(SHOW_MENU);
+      }
+    }
+  }
+
+  private cancelAnimationPromise: any;
 
   private async loadAnimation(): Promise<void> {
     // Menu swipe animation takes the menu's inner width as parameter,
@@ -451,25 +506,33 @@ export class Menu implements ComponentInterface, MenuI {
     this.animation.fill('both');
   }
 
-  private async startAnimation(shouldOpen: boolean, animated: boolean): Promise<void> {
-    const isReversed = !shouldOpen;
-    const mode = getIonMode(this);
-    const easing = mode === 'ios' ? iosEasing : mdEasing;
-    const easingReverse = mode === 'ios' ? iosEasingReverse : mdEasingReverse;
-    const ani = (this.animation as Animation)!
-      .direction(isReversed ? 'reverse' : 'normal')
-      .easing(isReversed ? easingReverse : easing)
-      .onFinish(() => {
-        if (ani.getDirection() === 'reverse') {
-          ani.direction('normal');
-        }
-      });
+  private async startAnimation(shouldOpen: boolean, animated: boolean): Promise<boolean> {
+    return new Promise(async (resolve) => {
+      const isReversed = !shouldOpen;
+      const mode = getIonMode(this);
+      const easing = mode === 'ios' ? iosEasing : mdEasing;
+      const easingReverse = mode === 'ios' ? iosEasingReverse : mdEasingReverse;
+      const ani = (this.animation as Animation)!
+        .direction(isReversed ? 'reverse' : 'normal')
+        .easing(isReversed ? easingReverse : easing)
+        .onFinish(() => {
+          if (ani.getDirection() === 'reverse') {
+            ani.direction('normal');
+          }
+        });
 
-    if (animated) {
-      await ani.play();
-    } else {
-      ani.play({ sync: true });
-    }
+      if (animated) {
+        this.cancelAnimationPromise = () => {
+          resolve(false);
+        }
+        await ani.play();
+        this.cancelAnimationPromise = undefined;
+      } else {
+        ani.play({ sync: true });
+      }
+
+      resolve(true);
+    });
   }
 
   private _isActive() {
@@ -681,10 +744,7 @@ export class Menu implements ComponentInterface, MenuI {
         this.backdropEl.classList.remove(SHOW_BACKDROP);
       }
 
-      if (this.animation) {
-        this.animation.stop();
-      }
-
+      console.log('hellooooo')
       // emit close event
       this.ionDidClose.emit();
 
@@ -699,16 +759,28 @@ export class Menu implements ComponentInterface, MenuI {
       this.gesture.enable(isActive && this.swipeGesture);
     }
 
-    // Close menu immediately
-    if (!isActive && this._isOpen) {
-      // close if this menu is open, and should not be enabled
-      this.forceClosing();
+    if (!isActive) {
+      this.stopAnimation();
+      this._setOpen(false, false);
     }
 
     if (!this.disabled) {
       menuController._setActiveMenu(this);
     }
-    assert(!this.isAnimating, 'can not be animating');
+  }
+
+  private stopAnimation() {
+    const { animation } = this;
+
+    if (animation !== undefined) {
+      animation.stop();
+
+      if (this.cancelAnimationPromise) {
+        this.cancelAnimationPromise();
+      }
+    }
+
+    this.isAnimating = false;
   }
 
   private forceClosing() {
