@@ -15,8 +15,7 @@
     "build": "npm run clean && npm run compile && npm run bundle",
     "clean": "rimraf dist",
     "compile": "npm run tsc",
-    "tsc": "tsc -p .",
-    "sync": "sh ./scripts/sync.sh"
+    "tsc": "tsc -p ."
   },
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",

@@ -31,8 +31,7 @@
     "prettier": "prettier \"./src/**/*.{html,ts,tsx,js,jsx}\"",
     "lint": "npm run eslint && npm run prettier -- --write --cache",
     "lint.fix": "npm run eslint -- --fix && npm run prettier -- --write --cache",
-    "tsc": "tsc -p .",
-    "sync": "sh ./scripts/sync.sh"
+    "tsc": "tsc -p ."
   },
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
