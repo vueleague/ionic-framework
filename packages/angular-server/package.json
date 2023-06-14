@@ -1,5 +1,8 @@
 {
   "name": "@ionic/angular-server",
+  "workspaces": [
+    "../../core",
+  ],
   "version": "7.0.12",
   "description": "Angular SSR Module for Ionic",
   "keywords": [

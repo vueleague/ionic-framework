@@ -1,5 +1,8 @@
 {
   "name": "@ionic/react-router",
+  "workspaces": [
+    "../react"
+  ],
   "version": "7.0.12",
   "description": "React Router wrapper for @ionic/react",
   "keywords": [

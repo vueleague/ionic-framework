@@ -1,5 +1,8 @@
 {
   "name": "@ionic/react",
+  "workspaces": [
+    "../../core"
+  ],
   "version": "7.0.12",
   "description": "React specific wrapper for @ionic/core",
   "keywords": [

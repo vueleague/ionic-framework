@@ -1,8 +1,6 @@
 name: 'Release'
 description: 'Releases a package'
 inputs:
-  scope:
-    description: 'The package to release. Must match a package specified in lerna.json.'
   version:
     description: 'The type of version to release.'
   tag:
@@ -22,11 +20,8 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16.x
-    - name: Install latest npm
-      run: npm install -g npm@latest
-      shell: bash
     - name: Install Dependencies
-      run: lerna bootstrap --include-dependencies --scope ${{ inputs.scope }} --ignore-scripts -- --legacy-peer-deps
+      run: npm ci
       shell: bash
       working-directory: ${{ inputs.working-directory }}
     - name: Update Version

@@ -25,7 +25,6 @@ jobs:
     - uses: actions/checkout@v3
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/core'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -57,7 +56,6 @@ jobs:
         filename: DocsBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/docs'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -77,7 +75,6 @@ jobs:
         filename: CoreBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/angular'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -104,7 +101,6 @@ jobs:
         filename: CoreBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/react'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -130,7 +126,6 @@ jobs:
         filename: CoreBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/vue'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -162,7 +157,6 @@ jobs:
         filename: AngularBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/angular-server'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -189,7 +183,6 @@ jobs:
         filename: ReactBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/react-router'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}
@@ -215,7 +208,6 @@ jobs:
         filename: VueBuild.zip
     - uses: ./.github/workflows/actions/publish-npm
       with:
-        scope: '@ionic/vue-router'
         tag: ${{ inputs.tag }}
         version: ${{ inputs.version }}
         preid: ${{ inputs.preid }}

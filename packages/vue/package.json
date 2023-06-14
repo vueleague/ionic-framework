@@ -1,5 +1,9 @@
 {
   "name": "@ionic/vue",
+  "workspaces": [
+    "../vue-router",
+    "../../core"
+  ],
   "version": "7.0.12",
   "description": "Vue specific wrapper for @ionic/core",
   "scripts": {

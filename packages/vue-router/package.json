@@ -1,5 +1,8 @@
 {
   "name": "@ionic/vue-router",
+  "workspaces": [
+    "../vue"
+  ],
   "version": "7.0.12",
   "description": "Vue Router integration for @ionic/vue",
   "scripts": {
