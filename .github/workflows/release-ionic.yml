@@ -35,7 +35,7 @@ jobs:
       with:
         name: ionic-core
         output: core/CoreBuild.zip
-        paths: core/dist core/components core/css core/hydrate core/loader core/src/components.d.ts
+        paths: core/dist core/components core/css core/hydrate core/loader core/src/components.d.ts node_modules/ionicons
     - name: Cache Built @ionic/docs
       uses: ./.github/workflows/actions/upload-archive
       with:
