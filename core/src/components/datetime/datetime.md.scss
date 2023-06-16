@@ -68,13 +68,16 @@
 }
 
 // Individual day button in month
-:host .calendar-day {
+.calendar-day {
   @include padding(13px, 0, 13px, 0px);
 
   font-size: $datetime-md-calendar-item-font-size;
+
+  width: 42px;
+  height: 42px;
 }
 
-.calendar-day:focus .calendar-day-highlight {
+.calendar-day:focus {
   background: current-color(base, 0.2);
 
   box-shadow: 0px 0px 0px 4px current-color(base, 0.2);
@@ -84,12 +87,10 @@
  * Day that today but not selected
  * should have ion-color for text color.
  */
-:host .calendar-day.calendar-day-today {
-  color: current-color(base);
-}
-
-.calendar-day.calendar-day-today .calendar-day-highlight {
+.calendar-day.calendar-day-today {
   border: 1px solid current-color(base);
+
+  color: current-color(base);
 }
 
 /**
@@ -97,14 +98,10 @@
  * is selected should have ion-color for
  * text color and be bolder.
  */
-:host .calendar-day.calendar-day-active {
-  color: current-color(contrast);
-}
-
-.calendar-day.calendar-day-active .calendar-day-highlight {
-  border: 1px solid current-color(base);
-
+.calendar-day.calendar-day-active {
   background: current-color(base);
+
+  color: current-color(contrast);
 }
 
 // Time / Header

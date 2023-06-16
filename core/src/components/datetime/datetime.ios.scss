@@ -20,7 +20,7 @@
   @include padding($datetime-ios-padding, $datetime-ios-padding, $datetime-ios-padding, $datetime-ios-padding);
 
   border-bottom: $datetime-ios-border-color;
-  
+
   font-size: 14px;
 }
 
@@ -88,32 +88,11 @@
   height: calc(100% - #{$datetime-ios-padding});
 }
 
-:host .calendar-day {
+.calendar-day {
   font-size: 20px;
-}
 
-.calendar-day:focus .calendar-day-highlight,
-.calendar-day.calendar-day-active .calendar-day-highlight {
-  opacity: 0.2;
-}
-
-.calendar-day.calendar-day-active .calendar-day-highlight {
-  background: current-color(base);
-}
-
-// !important is needed here to overwrite custom highlight background, which is inline.
-// Does not apply to the active state because highlights aren't applied at all there.
-.calendar-day:focus .calendar-day-highlight {
-  /* stylelint-disable-next-line declaration-no-important */
-  background: current-color(base) !important;
-}
-
-/**
- * Day that today but not selected
- * should have ion-color for text color.
- */
-:host .calendar-day.calendar-day-today {
-  color: current-color(base);
+  width: 40px;
+  height: 40px;
 }
 
 /**
@@ -121,24 +100,36 @@
  * is selected should have ion-color for
  * text color and be bolder.
  */
-:host .calendar-day.calendar-day-active {
+.calendar-day.calendar-day-active {
   color: current-color(base);
+  background: current-color(base, 0.2);
 
   font-weight: 600;
 }
 
 /**
- * Day that is selected and is today
- * should have white color.
+ * Day that today but not selected
+ * should have ion-color for text color.
  */
-:host .calendar-day.calendar-day-today.calendar-day-active {
+.calendar-day.calendar-day-today {
+  color: current-color(base);
+}
+
+/**
+ * If today's date is active then it should
+ * have a solid background color and a text
+ * color that has enough contrast.
+ */
+.calendar-day.calendar-day-today.calendar-day-active {
+  background: current-color(base);
   color: current-color(contrast);
 }
 
-.calendar-day.calendar-day-today.calendar-day-active .calendar-day-highlight {
-  background: current-color(base);
-
-  opacity: 1;
+// !important is needed here to overwrite custom highlight background, which is inline.
+// Does not apply to the active state because highlights aren't applied at all there.
+.calendar-day:not(.calendar-day-today.calendar-day-active):focus {
+  /* stylelint-disable-next-line declaration-no-important */
+  background: current-color(base, 0.2) !important;
 }
 
 // Time / Header
