@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/build-core-stencil-prerelease
         with:
-          stencil-version: 3.4.0-dev.1687377141.615ce97
+          stencil-version: 3.4.0-dev.1687462915.89f9ea2
 
   test-core-clean-build:
     needs: [build-core-with-stencil-nightly]
