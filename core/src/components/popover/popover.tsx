@@ -7,9 +7,9 @@ import {
   BACKDROP,
   dismiss,
   eventMethod,
-  focusFirstDescendant,
+  // focusFirstDescendant,
   prepareOverlay,
-  present,
+  // present,
   setOverlayId,
 } from '@utils/overlays';
 import { isPlatform } from '@utils/platform';
@@ -20,9 +20,9 @@ import { getIonMode } from '../../global/ionic-global';
 import type { AnimationBuilder, ComponentProps, ComponentRef, FrameworkDelegate } from '../../interface';
 import type { OverlayEventDetail } from '../../utils/overlays-interface';
 
-import { iosEnterAnimation } from './animations/ios.enter';
+// import { iosEnterAnimation } from './animations/ios.enter';
 import { iosLeaveAnimation } from './animations/ios.leave';
-import { mdEnterAnimation } from './animations/md.enter';
+// import { mdEnterAnimation } from './animations/md.enter';
 import { mdLeaveAnimation } from './animations/md.leave';
 import type {
   PopoverInterface,
@@ -391,6 +391,7 @@ export class Popover implements ComponentInterface, PopoverInterface {
   @Method()
   async presentFromTrigger(event?: any, focusDescendant = false) {
     this.focusDescendantOnPresent = focusDescendant;
+    console.info(this.focusDescendantOnPresent);
 
     await this.present(event);
 
@@ -438,6 +439,7 @@ export class Popover implements ComponentInterface, PopoverInterface {
    */
   @Method()
   async present(event?: MouseEvent | TouchEvent | PointerEvent | CustomEvent): Promise<void> {
+    console.info(event);
     if (this.presented) {
       return;
     }
@@ -723,31 +725,31 @@ const LIFECYCLE_MAP: any = {
   ionPopoverDidDismiss: 'ionViewDidLeave',
 };
 
-interface PopoverPresentOptions {
-  /**
-   * The original target event that presented the popover.
-   */
-  event: Event;
-  /**
-   * Describes how to calculate the popover width.
-   */
-  size: PopoverSize;
-  /**
-   * The element that causes the popover to open.
-   */
-  trigger?: HTMLElement | null;
-  /**
-   * Describes what to position the popover relative to.
-   */
-  reference: PositionReference;
-  /**
-   * Side of the `reference` point to position the popover on.
-   */
-  side: PositionSide;
-  /**
-   * Describes how to align the popover content with the `reference` point.
-   */
-  align?: PositionAlign;
-}
+// interface PopoverPresentOptions {
+//   /**
+//    * The original target event that presented the popover.
+//    */
+//   event: Event;
+//   /**
+//    * Describes how to calculate the popover width.
+//    */
+//   size: PopoverSize;
+//   /**
+//    * The element that causes the popover to open.
+//    */
+//   trigger?: HTMLElement | null;
+//   /**
+//    * Describes what to position the popover relative to.
+//    */
+//   reference: PositionReference;
+//   /**
+//    * Side of the `reference` point to position the popover on.
+//    */
+//   side: PositionSide;
+//   /**
+//    * Describes how to align the popover content with the `reference` point.
+//    */
+//   align?: PositionAlign;
+// }
 
 type PopoverDismissOptions = Event;
