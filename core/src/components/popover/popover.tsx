@@ -464,7 +464,7 @@ export class Popover implements ComponentInterface, PopoverInterface {
     }
     this.configureDismissInteraction();
 
-    this.ionMount.emit();
+    // this.ionMount.emit();
 
     /**
      * When using the lazy loaded build of Stencil, we need to wait
@@ -487,6 +487,8 @@ export class Popover implements ComponentInterface, PopoverInterface {
     } else if (!this.keepContentsMounted) {
       await waitForMount();
     }
+
+    this.ionMount.emit();
 
     this.currentTransition = present<PopoverPresentOptions>(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, {
       event: event || this.event,
