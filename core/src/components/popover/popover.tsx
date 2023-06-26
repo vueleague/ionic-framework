@@ -373,10 +373,6 @@ export class Popover implements ComponentInterface, PopoverInterface {
         this.dismiss(undefined, undefined, false);
       });
     }
-
-    this.resizeObserver = new ResizeObserver((entries) => {
-      console.log('observer entries:', entries);
-    });
   }
 
   /**
@@ -467,7 +463,18 @@ export class Popover implements ComponentInterface, PopoverInterface {
     );
 
     console.log("this.usersElement:", this.usersElement);
-    this.resizeObserver?.observe(this.usersElement);
+
+    if(this.usersElement) {
+      await new Promise((resolve) => {
+        this.resizeObserver = new ResizeObserver((entries) => {
+          console.log("entries:", entries);
+          resolve(entries);
+          this.resizeObserver?.disconnect();
+        });
+
+        this.resizeObserver.observe(this.usersElement!);
+      });
+    }
 
     if (!this.keyboardEvents) {
       this.configureKeyboardInteraction();
