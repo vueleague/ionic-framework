@@ -11,6 +11,13 @@
     <link href="../../../../../scripts/testing/styles.css" rel="stylesheet" />
     <script src="../../../../../scripts/testing/scripts.js"></script>
     <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+
+    <style>
+      ion-popover.dynamic-size {
+        --width: fit-content !important;
+        --max-width: min(90%, 450px);
+      }
+    </style>
   </head>
   <body>
     <ion-app>
@@ -20,18 +27,28 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content class="ion-padding">
+      <ion-content>
+        <ion-button id="trigger-btn">Trigger</ion-button>
         <ion-button id="props" onclick="openPopover(event)">Open Popover via Props</ion-button>
         <ion-button id="method" onclick="openPopoverMethod(event)">Open Popover via Present Method</ion-button>
 
-        <ion-popover>
+        <ion-popover id="is-open-popover">
           <ion-content class="ion-padding"> This is my inline popover content! </ion-content>
+        </ion-popover>
+
+        <ion-popover class="dynamic-size" trigger="trigger-btn">
+          <ion-list>
+            <ion-item>
+              <ion-icon icon="power" color="danger"></ion-icon>
+              <ion-label>Sign Out</ion-label>
+            </ion-item>
+          </ion-list>
         </ion-popover>
       </ion-content>
     </ion-app>
 
     <script>
-      const popover = document.querySelector('ion-popover');
+      const popover = document.querySelector('#is-open-popover');
       const openPopover = (ev) => {
         popover.isOpen = true;
         popover.event = ev;
