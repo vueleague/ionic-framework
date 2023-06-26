@@ -62,6 +62,7 @@ export class Popover implements ComponentInterface, PopoverInterface {
   private destroyTriggerInteraction?: () => void;
   private destroyKeyboardInteraction?: () => void;
   private destroyDismissInteraction?: () => void;
+  private resizeObserver?: ResizeObserver;
 
   private inline = false;
   private workingDelegate?: FrameworkDelegate;
@@ -341,6 +342,8 @@ export class Popover implements ComponentInterface, PopoverInterface {
     if (destroyTriggerInteraction) {
       destroyTriggerInteraction();
     }
+
+    this.resizeObserver?.disconnect();
   }
 
   componentWillLoad() {
@@ -370,6 +373,10 @@ export class Popover implements ComponentInterface, PopoverInterface {
         this.dismiss(undefined, undefined, false);
       });
     }
+
+    this.resizeObserver = new ResizeObserver((entries) => {
+      console.log('observer entries:', entries);
+    });
   }
 
   /**
@@ -458,6 +465,9 @@ export class Popover implements ComponentInterface, PopoverInterface {
       this.componentProps,
       inline
     );
+
+    console.log("this.usersElement:", this.usersElement);
+    this.resizeObserver?.observe(this.usersElement);
 
     if (!this.keyboardEvents) {
       this.configureKeyboardInteraction();
@@ -569,6 +579,8 @@ export class Popover implements ComponentInterface, PopoverInterface {
     }
 
     this.currentTransition = undefined;
+
+    this.resizeObserver?.disconnect();
 
     return shouldDismiss;
   }
