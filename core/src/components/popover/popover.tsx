@@ -498,28 +498,28 @@ export class Popover implements ComponentInterface, PopoverInterface {
       await waitForMount();
     }
 
-    this.currentTransition = present<PopoverPresentOptions>(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, {
-      event: event || this.event,
-      size: this.size,
-      trigger: this.triggerEl,
-      reference: this.reference,
-      side: this.side,
-      align: this.alignment,
-    });
+    // this.currentTransition = present<PopoverPresentOptions>(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, {
+    //   event: event || this.event,
+    //   size: this.size,
+    //   trigger: this.triggerEl,
+    //   reference: this.reference,
+    //   side: this.side,
+    //   align: this.alignment,
+    // });
 
-    await this.currentTransition;
+    // await this.currentTransition;
 
-    this.currentTransition = undefined;
+    // this.currentTransition = undefined;
 
-    /**
-     * If popover is nested and was
-     * presented using the "Right" arrow key,
-     * we need to move focus to the first
-     * descendant inside of the popover.
-     */
-    if (this.focusDescendantOnPresent) {
-      focusFirstDescendant(this.el, this.el);
-    }
+    // /**
+    //  * If popover is nested and was
+    //  * presented using the "Right" arrow key,
+    //  * we need to move focus to the first
+    //  * descendant inside of the popover.
+    //  */
+    // if (this.focusDescendantOnPresent) {
+    //   focusFirstDescendant(this.el, this.el);
+    // }
   }
 
   /**
