@@ -7,8 +7,14 @@
 /// @prop - Font size of the alert
 $alert-md-font-size:                          14px !default;
 
-/// @prop - Max width of the alert
-$alert-md-max-width:                          280px !default;
+/// @prop - Max width of the alert on small displays
+$alert-md-small-max-width:                          280px !default;
+
+/// @prop - Max width of the alert on large displays
+$alert-md-large-max-width:                          560px !default;
+
+/// @prop - Max height of the alert
+$alert-md-max-height:                          calc(100vh - 96px) !default;
 
 /// @prop - Border radius of the alert
 $alert-md-border-radius:                      4px !default;

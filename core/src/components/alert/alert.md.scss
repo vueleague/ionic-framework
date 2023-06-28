@@ -6,10 +6,18 @@
 
 :host {
   --background: #{$alert-md-background-color};
-  --max-width: #{$alert-md-max-width};
+  --max-width: calc(100% - 96px);
+  --max-height: calc(100% - 96px);
   --backdrop-opacity: var(--ion-backdrop-opacity, 0.32);
 
   font-size: $alert-md-font-size;
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    --max-width: 560px;
+    --max-height: 560px;
+  }
 }
 
 .alert-wrapper {
@@ -22,9 +30,13 @@
 // --------------------------------------------------
 
 .alert-head {
+  background: red;
   @include padding($alert-md-head-padding-top, $alert-md-head-padding-end, $alert-md-head-padding-bottom, $alert-md-head-padding-start);
 
   text-align: $alert-md-head-text-align;
+}
+.alert-button-group {
+  background: green;
 }
 
 .alert-title {
@@ -49,11 +61,11 @@
   @include padding($alert-md-message-padding-top, $alert-md-message-padding-end, $alert-md-message-padding-bottom, $alert-md-message-padding-start);
 
   color: $alert-md-message-text-color;
+
+  overflow: auto;
 }
 
 .alert-message {
-  max-height: $alert-md-content-max-height;
-
   font-size: $alert-md-message-font-size;
 }
 
@@ -101,8 +113,6 @@
 .alert-radio-group,
 .alert-checkbox-group {
   position: relative;
-
-  max-height: $alert-md-content-max-height;
 
   border-top: $alert-md-list-border-top;
   border-bottom: $alert-md-list-border-bottom;
