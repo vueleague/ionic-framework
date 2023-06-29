@@ -51,7 +51,14 @@
 
       <ion-content class="ion-padding ion-text-center" id="content" no-bounce>
 
+        <ion-radio-group value="ios">
+          <ion-radio mode="md" legacy="true" value="md-legacy">My Legacy MD radio</ion-radio>
+          <ion-radio mode="md" value="md">My MD radio</ion-radio>
+          <ion-radio mode="ios" value="ios">My iOS radio</ion-radio>
+        </ion-radio-group>
 
+        <ion-range label="My MD range" mode="md" pin="true"></ion-range>
+        <ion-range label="My iOS range" mode="ios" pin="true"></ion-range>
         <ion-item button="true">
           <ion-label position="stacked">My Label</ion-label>
         </ion-item>
