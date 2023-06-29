@@ -161,7 +161,7 @@
 }
 
 .range-knob-pressed .range-pin,
-.range-knob-handle.ion-focused .range-pin {
+.range-knob-handle:focus-visible .range-pin {
   @include transform(translate3d(0, -24px, 0), scale(1));
 }
 
@@ -175,12 +175,12 @@
 
 .range-knob-handle {
   &.ion-activated .range-knob:before,
-  &.ion-focused .range-knob:before,
+  &:focus-visible .range-knob:before,
   &.range-knob-pressed .range-knob:before {
     transform: scale(2);
   }
 
-  &.ion-focused .range-knob::before {
+  &:focus-visible .range-knob::before {
     opacity: #{$range-md-knob-indicator-opacity-focus};
   }
 
@@ -191,7 +191,7 @@
 }
 
 :host(:not(.range-has-pin)) .range-knob-pressed .range-knob,
-:host(:not(.range-has-pin)) .range-knob-handle.ion-focused .range-knob {
+:host(:not(.range-has-pin)) .range-knob-handle:focus-visible .range-knob {
   transform: scale(1);
 }
 
