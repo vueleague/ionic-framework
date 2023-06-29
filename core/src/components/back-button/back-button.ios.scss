@@ -43,6 +43,6 @@
 // Back Button Color: Focused
 // --------------------------------------------------
 
-:host(.ion-color.ion-focused) .button-native::after {
+:host(.ion-color) .button-native:focus-visible::after {
   background: #{current-color(base)};
 }

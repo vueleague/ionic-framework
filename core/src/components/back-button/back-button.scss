@@ -194,7 +194,7 @@ ion-icon {
 // Back Button: Focused
 // --------------------------------------------------
 
-:host(.ion-focused) .button-native {
+.button-native:focus-visible {
   color: var(--color-focused);
 
   &::after {
@@ -228,7 +228,7 @@ ion-icon {
 // Back Button Color: Focused
 // --------------------------------------------------
 
-:host(.ion-color.ion-focused) .button-native {
+:host(.ion-color) .button-native:focus-visible {
   color: #{current-color(base)};
 }
 
