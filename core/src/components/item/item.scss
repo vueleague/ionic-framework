@@ -130,7 +130,7 @@
 // Item: Focused
 // --------------------------------------------------
 
-:host(.ion-focused) .item-native {
+.item-native:focus-visible {
   color: var(--color-focused);
 
   &::after {
@@ -140,7 +140,7 @@
   }
 }
 
-:host(.ion-color.ion-focused) .item-native {
+:host(.ion-color) .item-native:focus-visible {
   color: current-color(contrast);
 
   &::after {
@@ -153,7 +153,7 @@
 // --------------------------------------------------
 
 @media (any-hover: hover) {
-  :host(.ion-activatable:not(.ion-focused):hover) .item-native {
+  :host(.ion-activatable:hover) .item-native:not(:focus-visible) {
     color: var(--color-hover);
 
     &::after {
@@ -163,7 +163,7 @@
     }
   }
 
-  :host(.ion-color.ion-activatable:not(.ion-focused):hover) .item-native {
+  :host(.ion-color.ion-activatable:hover) .item-native:not(focus-visible) {
     color: #{current-color(contrast)};
 
     &::after {
@@ -402,7 +402,7 @@ button, a {
 // Item Input Focused
 // --------------------------------------------------
 
-:host(.item-interactive.ion-focused),
+:host(.item-interactive.ion-LEGACY-focused),
 :host(.item-interactive.item-has-focus),
 :host(.item-interactive.ion-touched.ion-invalid) {
   // If the item has a full border and highlight is enabled, show the full item highlight
@@ -412,8 +412,8 @@ button, a {
   --inset-highlight-height: #{calc(var(--highlight-height) * var(--show-inset-highlight))};
 }
 
-:host(.ion-focused) .item-highlight,
-:host(.ion-focused) .item-inner-highlight,
+:host(.ion-LEGACY-focused) .item-highlight,
+:host(.ion-LEGACY-focused) .item-inner-highlight,
 :host(.item-has-focus) .item-highlight,
 :host(.item-has-focus) .item-inner-highlight {
   transform: scaleX(1);
@@ -422,27 +422,27 @@ button, a {
   border-color: var(--highlight-background);
 }
 
-:host(.ion-focused) .item-highlight,
+:host(.ion-LEGACY-focused) .item-highlight,
 :host(.item-has-focus) .item-highlight {
   border-width: var(--full-highlight-height);
 
   opacity: var(--show-full-highlight);
 }
 
-:host(.ion-focused) .item-inner-highlight,
+:host(.ion-LEGACY-focused) .item-inner-highlight,
 :host(.item-has-focus) .item-inner-highlight {
   border-bottom-width: var(--inset-highlight-height);
 
   opacity: var(--show-inset-highlight);
 }
 
-:host(.ion-focused.item-fill-solid) .item-highlight,
+:host(.ion-LEGACY-focused.item-fill-solid) .item-highlight,
 :host(.item-has-focus.item-fill-solid) .item-highlight {
   border-width: calc(var(--full-highlight-height) - 1px);
 }
 
-:host(.ion-focused) .item-inner-highlight,
-:host(.ion-focused:not(.item-fill-outline)) .item-highlight,
+:host(.ion-LEGACY-focused) .item-inner-highlight,
+:host(.ion-LEGACY-focused:not(.item-fill-outline)) .item-highlight,
 :host(.item-has-focus) .item-inner-highlight,
 :host(.item-has-focus:not(.item-fill-outline)) .item-highlight {
   border-top: none;
@@ -454,7 +454,7 @@ button, a {
 // Item Input Focus
 // --------------------------------------------------
 
-:host(.item-interactive.ion-focused),
+:host(.item-interactive.ion-LEGACY-focused),
 :host(.item-interactive.item-has-focus) {
   --highlight-background: var(--highlight-color-focused);
 }
