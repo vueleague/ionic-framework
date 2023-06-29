@@ -46,7 +46,7 @@
   --transition: none;
 }
 
-:host(.ion-color.ion-focused) .item-native::after {
+:host(.ion-color) .item-native:focus-visible::after {
   background: #000;
 
   opacity: .15;

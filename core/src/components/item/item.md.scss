@@ -160,8 +160,7 @@
   transition: none;
 }
 
-:host(.item-fill-outline.ion-focused) .item-native,
-:host(.item-fill-outline.item-has-focus) .item-native {
+:host(.item-fill-outline) .item-native:focus-visible {
   border-color: transparent;
 }
 
@@ -365,8 +364,8 @@
   --padding-start: 0;
 }
 
-:host(.ion-focused:not(.ion-color)) ::slotted(.label-stacked),
-:host(.ion-focused:not(.ion-color)) ::slotted(.label-floating),
+:host(.ion-LEGACY-focused:not(.ion-color)) ::slotted(.label-stacked),
+:host(.ion-LEGACY-focused:not(.ion-color)) ::slotted(.label-floating),
 :host(.item-has-focus:not(.ion-color)) ::slotted(.label-stacked),
 :host(.item-has-focus:not(.ion-color)) ::slotted(.label-floating) {
   color: $label-md-text-color-focused;
@@ -405,7 +404,7 @@
   --border-color: #{$item-md-input-fill-border-color};
 }
 
-:host(.item-fill-solid.ion-focused) .item-native,
+:host(.item-fill-solid.ion-LEGACY-focused) .item-native,
 :host(.item-fill-solid.item-has-focus) .item-native {
   --background: var(--background-focused);
 }
@@ -452,8 +451,8 @@
   @include padding-horizontal(32px, null);
 }
 
-:host(.item-fill-outline.item-label-floating.ion-focused) .item-native ::slotted(ion-input:not(:first-child)),
-:host(.item-fill-outline.item-label-floating.ion-focused) .item-native ::slotted(ion-textarea:not(:first-child)),
+:host(.item-fill-outline.item-label-floating.ion-LEGACY-focused) .item-native ::slotted(ion-input:not(:first-child)),
+:host(.item-fill-outline.item-label-floating.ion-LEGACY-focused) .item-native ::slotted(ion-textarea:not(:first-child)),
 :host(.item-fill-outline.item-label-floating.item-has-focus) .item-native ::slotted(ion-input:not(:first-child)),
 :host(.item-fill-outline.item-label-floating.item-has-focus) .item-native ::slotted(ion-textarea:not(:first-child)),
 :host(.item-fill-outline.item-label-floating.item-has-value) .item-native ::slotted(ion-input:not(:first-child)),
