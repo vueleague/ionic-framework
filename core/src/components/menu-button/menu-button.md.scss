@@ -20,15 +20,6 @@
   font-size: 24px;
 }
 
-
-// Menu Button Color: Focused
-// --------------------------------------------------
-
-:host(.ion-color.ion-focused)::after {
-  background: #{current-color(base)};
-}
-
-
 // Menu Button Color: Hover
 // --------------------------------------------------
 

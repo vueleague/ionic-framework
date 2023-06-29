@@ -116,7 +116,7 @@ ion-icon {
 // Menu Button: Focused
 // --------------------------------------------------
 
-:host(.ion-focused) .button-native {
+.button-native:focus-visible {
   color: var(--color-focused);
 
   &::after {
