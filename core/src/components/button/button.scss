@@ -246,12 +246,11 @@ ion-ripple-effect {
   @include button-state();
 }
 
-// Button Focused
-:host(.ion-focused) {
+.button-native:focus-visible {
   color: var(--color-focused);
 }
 
-:host(.ion-focused) .button-native::after {
+.button-native:focus-visible::after {
   background: var(--background-focused);
 
   opacity: var(--background-focused-opacity);

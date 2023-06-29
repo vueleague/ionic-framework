@@ -133,8 +133,8 @@
 // iOS Button Focused
 // --------------------------------------------------
 
-:host(.button-outline.ion-focused.ion-color) .button-native,
-:host(.button-clear.ion-focused.ion-color) .button-native {
+:host(.button-outline.ion-color) .button-native:focus-visible,
+:host(.button-clear.ion-color) .button-native:focus-visible {
   color: current-color(base);
 
   &::after {
@@ -142,7 +142,7 @@
   }
 }
 
-:host(.button-solid.ion-color.ion-focused) .button-native::after {
+:host(.button-solid.ion-color) .button-native:focus-visible::after {
   background: #{current-color(shade)};
 }
 

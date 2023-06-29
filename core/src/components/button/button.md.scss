@@ -135,12 +135,12 @@
  * colors when using the color prop.
  */
 
-:host(.button-solid.ion-color.ion-focused) .button-native::after {
+:host(.button-solid.ion-color) .button-native:focus-visible::after {
   background: #{current-color(contrast)};
 }
 
-:host(.button-clear.ion-color.ion-focused) .button-native::after,
-:host(.button-outline.ion-color.ion-focused) .button-native::after {
+:host(.button-clear.ion-color) .button-native:focus-visible::after,
+:host(.button-outline.ion-color) .button-native:focus-visible::after {
   background: #{current-color(base)};
 }
 
