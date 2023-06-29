@@ -86,11 +86,11 @@
 // Material Design Radio: Keyboard Focus
 // -----------------------------------------
 
-:host(.ion-focused.legacy-radio) .radio-icon::after {
+:host(.ion-LEGACY-focused.legacy-radio) .radio-icon::after {
   @include position(-12px, null, null, -12px);
 }
 
-:host(.ion-focused) .radio-icon::after {
+input:focus-visible ~ .native-wrapper .radio-icon::after {
   @include border-radius(var(--inner-border-radius));
 
   display: block;
