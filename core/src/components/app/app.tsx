@@ -41,7 +41,6 @@ export class App implements ComponentInterface {
         if (typeof (window as any) !== 'undefined') {
           import('../../utils/keyboard/keyboard').then((module) => module.startKeyboardAssist(window));
         }
-        import('../../utils/focus-visible').then((module) => (this.focusVisible = module.startFocusVisible()));
       });
     }
   }
