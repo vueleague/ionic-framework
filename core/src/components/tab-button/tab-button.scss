@@ -88,7 +88,7 @@
 // Tab Button: States
 // --------------------------------------------------
 
-:host(.ion-focused) .button-native {
+.button-native:focus-visible {
   color: var(--color-focused);
 
   &::after {
