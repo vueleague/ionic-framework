@@ -12,6 +12,25 @@
     <script src="../../../../../scripts/testing/scripts.js"></script>
     <script nomodule src="../../../../../dist/ionic/ionic.js"></script>
     <script type="module" src="../../../../../dist/ionic/ionic.esm.js"></script>
+    <style>
+      .liam:focus-visible {
+        background: red;
+      }
+
+      .liam-wrapper {
+        background: purple;
+
+        padding: 20px;
+      }
+
+      .focus-within-wrapper:focus-within {
+        background: red;
+      }
+
+      .focus-within-visible-wrapper:has(:focus-visible) {
+        background: green;
+      }
+    </style>
   </head>
 
   <body>
@@ -19,12 +38,43 @@
       <ion-header>
         <ion-toolbar>
           <ion-title>Button - Basic</ion-title>
+          <ion-buttons slot="start">
+            <ion-menu-button auto-hide="false"></ion-menu-button>
+            <ion-menu-button auto-hide="false" color="danger"></ion-menu-button>
+
+            <ion-back-button text="Back" default-href="/"></ion-back-button>
+            <ion-back-button text="Back" default-href="/" color="danger"></ion-back-button>
+          </ion-buttons>
+
         </ion-toolbar>
       </ion-header>
 
       <ion-content class="ion-padding ion-text-center" id="content" no-bounce>
+
+
+        <ion-item button="true">
+          <ion-label position="stacked">My Label</ion-label>
+        </ion-item>
+
+        <ion-item button="true" color="danger">
+          <ion-label>My Label</ion-label>
+        </ion-item>
+
+        <br/><br/>
+
+        <button class="liam">Hello world</button>
+
+        <div class="liam-wrapper focus-within-wrapper">
+          <button>My Button</button>
+        </div>
+
+        <div class="liam-wrapper focus-within-visible-wrapper">
+          <button>My Button</button>
+        </div>
         <p>
           <ion-button id="default">Default</ion-button>
+          <ion-button fill="outline" id="default">Outline</ion-button>
+          <ion-button fill="clear" id="default">Clear</ion-button>
           <ion-button class="ion-focused">Default.focused</ion-button>
           <ion-button class="ion-activated">Default.activated</ion-button>
         </p>
