@@ -137,8 +137,8 @@
   z-index: 0;
 }
 
-.alert-button.ion-focused,
-.alert-tappable.ion-focused {
+.alert-button:focus-visible,
+.alert-tappable:focus-visible {
   background: $background-color-step-100;
 }
 

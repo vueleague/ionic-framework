@@ -311,6 +311,6 @@
 
 .alert-button-role-destructive,
 .alert-button-role-destructive.ion-activated,
-.alert-button-role-destructive.ion-focused {
+.alert-button-role-destructive:focus-visible {
   color: $alert-ios-button-destructive-text-color;
 }
