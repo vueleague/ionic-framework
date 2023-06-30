@@ -76,7 +76,7 @@
 }
 
 // Focused
-:host(.in-segment-color.ion-focused) .button-native::after {
+:host(.in-segment-color) .button-native:focus-visible::after {
   background: #{current-color(base)};
 }
 
