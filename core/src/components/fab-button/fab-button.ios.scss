@@ -52,12 +52,12 @@
 // FAB Button: Color
 // --------------------------------------------------
 
-:host(.ion-color.ion-focused) .button-native::after {
+:host(.ion-color) .button-native:focus-visible::after {
   background: #{current-color(shade)};
 }
 
 // Focused/Activated Button with Color
-:host(.ion-color.ion-focused) .button-native,
+:host(.ion-color) .button-native:focus-visible,
 :host(.ion-color.ion-activated) .button-native {
   color: #{current-color(contrast)};
 
@@ -109,7 +109,7 @@
     background: #{current-color(base, $fab-ios-translucent-background-alpha)};
   }
 
-  :host(.ion-color.ion-focused.fab-button-translucent) .button-native,
+  :host(.ion-color.fab-button-translucent) .button-native:focus-visible,
   :host(.ion-color.ion-activated.fab-button-translucent) .button-native {
     background: #{current-color(base)};
   }

@@ -55,7 +55,7 @@
 // --------------------------------------------------
 
 // Focused Button with Color
-:host(.ion-color.ion-focused) .button-native {
+:host(.ion-color) .button-native:focus-visible {
   color: #{current-color(contrast)};
 
   &::after {
