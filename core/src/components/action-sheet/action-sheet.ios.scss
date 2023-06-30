@@ -169,7 +169,7 @@
 
 .action-sheet-destructive,
 .action-sheet-destructive.ion-activated,
-.action-sheet-destructive.ion-focused {
+.action-sheet-destructive:focus-visible {
   color: $action-sheet-ios-button-destructive-text-color;
 }
 

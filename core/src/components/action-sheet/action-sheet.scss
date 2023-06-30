@@ -189,7 +189,7 @@
 // Action Sheet: Focused
 // --------------------------------------------------
 
-.action-sheet-button.ion-focused {
+.action-sheet-button:focus-visible {
   color: var(--button-color-focused);
 
   &::after {
