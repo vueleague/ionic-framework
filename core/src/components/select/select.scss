@@ -6,6 +6,7 @@
 :host {
   /**
    * @prop --background: Background of the select
+   * @prop --background-focused: Background of the select when focused
    * @prop --padding-top: Top padding of the select
    * @prop --padding-end: Right padding if direction is left-to-right, and left padding if direction is right-to-left of the select
    * @prop --padding-bottom: Bottom padding of the select
@@ -19,9 +20,12 @@
    * @prop --highlight-color-valid: The color of the highlight on the select when valid
    *
    * @prop --border-color: Color of the select border
+   * @prop --border-color-focused: Color of the select border when focused
    * @prop --border-radius: Radius of the select border. A large radius may display unevenly when using fill="outline"; if needed, use shape="round" instead or increase --padding-start.
    * @prop --border-style: Style of the select border
+   * @prop --border-style-focused: Style of the select border when focused
    * @prop --border-width: Width of the select border
+   * @prop --border-width-focused: Width of the select border when focused
    *
    * @prop --ripple-color: The color of the ripple effect on MD mode.
    */
@@ -36,6 +40,10 @@
   --highlight-color-focused: #{ion-color(primary, base)};
   --highlight-color-valid: #{ion-color(success, base)};
   --highlight-color-invalid: #{ion-color(danger, base)};
+  --background-focused: var(--background);
+  --border-color-focused: var(--border-color);
+  --border-width-focused: var(--border-width);
+  --border-style-focused: var(--border-style);
 
   /**
    * This is a private API that is used to switch
@@ -87,10 +95,6 @@
 
 :host(.select-disabled) {
   pointer-events: none;
-}
-
-:host(.ion-focused) button {
-  border: 2px solid #5e9ed6;
 }
 
 // TODO FW-3194 - Remove :not(.legacy-select) piece
@@ -224,6 +228,10 @@ button {
   cursor: inherit;
 
   box-sizing: border-box;
+}
+
+.select-wrapper:has(:focus-visible) {
+  background: var(--background-focused);
 }
 
 .select-wrapper .select-placeholder {
@@ -501,7 +509,7 @@ button {
 }
 
 :host(.select-expanded.select-label-placement-floating) .native-wrapper .select-placeholder,
-:host(.ion-focused.select-label-placement-floating) .native-wrapper .select-placeholder,
+:host(.select-label-placement-floating) .native-wrapper:has(:focus-visible) .select-placeholder,
 :host(.has-value.select-label-placement-floating) .native-wrapper .select-placeholder {
   opacity: 1;
 }
@@ -511,7 +519,7 @@ button {
  */
 :host(.select-label-placement-stacked) .label-text-wrapper,
 :host(.select-expanded.select-label-placement-floating) .label-text-wrapper,
-:host(.ion-focused.select-label-placement-floating) .label-text-wrapper,
+:host(.select-label-placement-floating) .select-wrapper:has(:focus-visible) .label-text-wrapper,
 :host(.has-value.select-label-placement-floating) .label-text-wrapper {
   @include transform(translateY(50%), scale(#{$select-floating-label-scale}));
 

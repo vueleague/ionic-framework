@@ -41,9 +41,9 @@
  * only apply to floating or stacked labels.
  */
 :host(.select-label-placement-floating.select-expanded) .label-text-wrapper,
-:host(.select-label-placement-floating.ion-focused) .label-text-wrapper,
+:host(.select-label-placement-floating) .select-wrapper:has(:focus-visible) .label-text-wrapper,
 :host(.select-label-placement-stacked.select-expanded) .label-text-wrapper,
-:host(.select-label-placement-stacked.ion-focused) .label-text-wrapper {
+:host(.select-label-placement-stacked) .select-wrapper:has(:focus-visible) .label-text-wrapper {
   color: var(--highlight-color);
 }
 
@@ -73,7 +73,7 @@
 }
 
 :host(.select-expanded) .select-highlight,
-:host(.ion-focused) .select-highlight {
+.select-wrapper:has(:focus-visible) .select-highlight {
   transform: scale(1);
 }
 
@@ -107,7 +107,7 @@
 :host(.select-expanded) .select-wrapper .select-icon,
 :host(.has-focus.ion-valid) .select-wrapper .select-icon,
 :host(.ion-touched.ion-invalid) .select-wrapper .select-icon,
-:host(.ion-focused) .select-wrapper .select-icon {
+.select-wrapper:has(:focus-visible) .select-icon {
   color: var(--highlight-color);
 }
 
