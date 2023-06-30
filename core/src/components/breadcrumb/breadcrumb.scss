@@ -59,12 +59,9 @@
 // Breadcrumb: Focused
 // ------------------------------------------
 
-:host(.ion-focused) {
-  color: var(--color-focused);
-}
-
-:host(.ion-focused) .breadcrumb-native {
+.breadcrumb-native:focus-visible {
   background: var(--background-focused);
+  color: var(--color-focused);
 }
 
 

@@ -27,19 +27,19 @@
 // Breadcrumb: Focused
 // ------------------------------------------
 
-:host(.ion-focused) .breadcrumb-native {
+.breadcrumb-native:focus-visible {
   @include border-radius(8px);
 }
 
-:host(.in-breadcrumbs-color.ion-focused) .breadcrumb-native,
-:host(.ion-color.ion-focused) .breadcrumb-native {
+:host(.in-breadcrumbs-color) .breadcrumb-native:focus-visible,
+:host(.ion-color) .breadcrumb-native:focus-visible {
   background: #{current-color(base, .1)};
   color: #{current-color(base)};
 }
 
-:host(.ion-focused) ::slotted(ion-icon),
-:host(.in-breadcrumbs-color.ion-focused) ::slotted(ion-icon),
-:host(.ion-color.ion-focused) ::slotted(ion-icon) {
+.breadcrumb-native:focus-visible ::slotted(ion-icon),
+:host(.in-breadcrumbs-color) .breadcrumb-native:focus-visible ::slotted(ion-icon),
+:host(.ion-color) .breadcrumb-native:focus-visible ::slotted(ion-icon) {
   color: $breadcrumb-ios-icon-color-focused;
 }
 
