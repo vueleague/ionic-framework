@@ -40,7 +40,7 @@
 // --------------------------------------------------
 
 :host(.title-large) {
-  @include padding(2px, 12px, 6px, 12px);
+  @include padding(0px, 12px);
   @include transform-origin(left, center);
 
   position: static;

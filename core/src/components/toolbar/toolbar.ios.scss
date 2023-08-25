@@ -84,6 +84,11 @@
 // Toolbar: Large Title
 // --------------------------------------------------
 
+:host(.toolbar-title-large) {
+  --padding-top: 5px;
+  --padding-bottom: 7px;
+}
+
 :host(.toolbar-title-large) .toolbar-container {
   flex-wrap: wrap;
   align-items: flex-start;
